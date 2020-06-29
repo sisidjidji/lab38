@@ -29,7 +29,7 @@ const{user}=useAuth();
       }
     };
     fetchData();
-  }, [requestObject]);
+  }, [requestObject,user]);
 
   // request - function that sets the request object
   // response - the response (this is stored in state, updated after the fetchdata function runs)
