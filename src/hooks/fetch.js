@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-
+import useAuth from '../contexts/auth'
 const useFetch = () => {
+const{user}=useAuth();
 
   const [requestObject, request] = useState(null);
   const [response, setResponse] = useState({});
@@ -16,6 +17,9 @@ const useFetch = () => {
       setIsLoading(true);
       try {
         requestObject.options.headers = { 'Content-Type': 'application/json' };
+        if(user && user.token){
+          requestObject.options.headers['Authorization']=`Bearer ${user.token}`;
+        }
         const res = await fetch(requestObject.url, requestObject.options);
         const json = res.status === 200 && await res.json();
         setResponse(json);
@@ -28,8 +32,8 @@ const useFetch = () => {
   }, [requestObject]);
 
   // request - function that sets the request object
-  // response - the resonse (this is stored in state, updated after the fetchdata function runs)
-  // error - the resonse (this is stored in state, updated after the fetchdata function runs)
+  // response - the response (this is stored in state, updated after the fetchdata function runs)
+  // error - the response (this is stored in state, updated after the fetchdata function runs)
   // isLoading - boolean to toggle load state, changed during operation of the fetchData function
   return { request, response, error, isLoading };
 
