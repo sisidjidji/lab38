@@ -10,7 +10,7 @@ class Main extends React.Component {
     return (
       <BrowserRouter>
       <AuthProvider>
-      <App />
+      <App/>
       </AuthProvider>
        
       </BrowserRouter>
