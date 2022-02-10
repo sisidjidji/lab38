@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "dependencies": {
     "@nmq/q": "^1.0.5",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-router-dom": "^5.2.0",
